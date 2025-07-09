@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using MyPortfolyoUdemy.DAL.Context;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Baðlantý cümlesi ekleniyor
+builder.Services.AddDbContext<MyPortfolioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionMyPortfolio")));
+
+
+//builder.Services.AddDbContext<MyPortfolioContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
 
 var app = builder.Build();
 
